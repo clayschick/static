@@ -1,13 +1,14 @@
 #!/bin/env node
-//  OpenShift sample Node application
+//  Static web server running on buffet
 var express = require('express');
 var fs      = require('fs');
+var buffet = require('buffet');
 
 
 /**
  *  Define the sample application.
  */
-var SampleApp = function() {
+var SAPServer = function() {
 
     //  Scope.
     var self = this;
@@ -113,7 +114,8 @@ var SampleApp = function() {
      */
     self.initializeServer = function() {
         self.createRoutes();
-        self.app = express.createServer();
+       self.app = express();
+       self.app.use(buffet);
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
@@ -146,14 +148,14 @@ var SampleApp = function() {
         });
     };
 
-};   /*  Sample Application.  */
+};
 
 
 
 /**
- *  main():  Main code.
+ *  Create, initialize, and start the server
  */
-var zapp = new SampleApp();
-zapp.initialize();
-zapp.start();
+var serv = new SAPServer();
+serv.initialize();
+serv.start();
 
