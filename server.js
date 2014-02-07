@@ -2,7 +2,7 @@
 //  Static web server running on buffet
 var express = require('express');
 var fs      = require('fs');
-var buffet = require('buffet');
+var buffet = require('buffet')('./site', {watch: true});;
 
 
 /**
@@ -38,21 +38,21 @@ var SAPServer = function() {
     /**
      *  Populate the cache.
      */
-    self.populateCache = function() {
+    /*self.populateCache = function() {
         if (typeof self.zcache === "undefined") {
             self.zcache = { 'index.html': '' };
         }
 
         //  Local cache for static content.
         self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };
+    };*/
 
 
     /**
      *  Retrieve entry (content) from cache.
      *  @param {string} key  Key identifying content to retrieve from cache.
      */
-    self.cache_get = function(key) { return self.zcache[key]; };
+    /*self.cache_get = function(key) { return self.zcache[key]; };*/
 
 
     /**
@@ -93,7 +93,7 @@ var SAPServer = function() {
     /**
      *  Create the routing table entries + handlers for the application.
      */
-    self.createRoutes = function() {
+    /*self.createRoutes = function() {
         self.routes = { };
 
         self.routes['/asciimo'] = function(req, res) {
@@ -105,7 +105,7 @@ var SAPServer = function() {
             res.setHeader('Content-Type', 'text/html');
             res.send(self.cache_get('index.html') );
         };
-    };
+    };*/
 
 
     /**
@@ -113,9 +113,9 @@ var SAPServer = function() {
      *  the handlers.
      */
     self.initializeServer = function() {
-        self.createRoutes();
-       self.app = express();
-       self.app.use(buffet);
+        //self.createRoutes();
+        self.app = express();
+        self.app.use(buffet);
 
         //  Add handlers for the app (from the routes).
         for (var r in self.routes) {
