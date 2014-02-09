@@ -35,25 +35,6 @@ var SAPServer = function() {
     };
 
 
-    /**
-     *  Populate the cache.
-     */
-    /*self.populateCache = function() {
-        if (typeof self.zcache === "undefined") {
-            self.zcache = { 'index.html': '' };
-        }
-
-        //  Local cache for static content.
-        self.zcache['index.html'] = fs.readFileSync('./index.html');
-    };*/
-
-
-    /**
-     *  Retrieve entry (content) from cache.
-     *  @param {string} key  Key identifying content to retrieve from cache.
-     */
-    /*self.cache_get = function(key) { return self.zcache[key]; };*/
-
 
     /**
      *  terminator === the termination handler
@@ -89,31 +70,11 @@ var SAPServer = function() {
     /*  ================================================================  */
     /*  App server functions (main app logic here).                       */
     /*  ================================================================  */
-
-    /**
-     *  Create the routing table entries + handlers for the application.
-     */
-    /*self.createRoutes = function() {
-        self.routes = { };
-
-        self.routes['/asciimo'] = function(req, res) {
-            var link = "http://i.imgur.com/kmbjB.png";
-            res.send("<html><body><img src='" + link + "'></body></html>");
-        };
-
-        self.routes['/'] = function(req, res) {
-            res.setHeader('Content-Type', 'text/html');
-            res.send(self.cache_get('index.html') );
-        };
-    };*/
-
-
     /**
      *  Initialize the server (express) and create the routes and register
      *  the handlers.
      */
     self.initializeServer = function() {
-        //self.createRoutes();
         self.app = express();
         self.app.use(buffet);
 
