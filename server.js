@@ -13,11 +13,6 @@ var SAPServer = function() {
     //  Scope.
     var self = this;
 
-
-    /*  ================================================================  */
-    /*  Helper functions.                                                 */
-    /*  ================================================================  */
-
     /**
      *  Set up server IP address and port # using env variables/defaults.
      */
@@ -79,9 +74,9 @@ var SAPServer = function() {
         self.app.use(buffet);
 
         //  Add handlers for the app (from the routes).
-        for (var r in self.routes) {
+        /*for (var r in self.routes) {
             self.app.get(r, self.routes[r]);
-        }
+        }*/
     };
 
 
@@ -90,7 +85,6 @@ var SAPServer = function() {
      */
     self.initialize = function() {
         self.setupVariables();
-        //self.populateCache();
         self.setupTerminationHandlers();
 
         // Create the express server and routes.

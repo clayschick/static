@@ -5,11 +5,23 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Testing snap.js and PureCSS">
+    <!--<link rel="stylesheet" type="text/css" href="/static/<%= grunt.config.get('pkg.name') %>.css"/>-->
+    <link rel="stylesheet" type="text/css" href="assets/css/pure.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/angular-snap.css"/>
+    <script type="text/javascript" src="assets/js/snap.min.js"></script>
+    <script type="text/javascript" src="assets/js/angular.js"></script>
+    <script type="text/javascript" src="assets/js/angular-route.js"></script>
+    <script type="text/javascript" src="assets/js/angular-snap.js"></script>
+    <script type="text/javascript" src="app.js"></script>
 
     <title>Test Page</title>
 
 </head>
-<body>
-    <p>Just doing some stuff!!!!!!!!!!!!!</p>
+<body ng-controller="AppCtrl">
+<!--<div ng-include="'header.tpl.html'"></div>
+<div ng-include="'notifications.tpl.html'" class="container-fluid" ng-show="notifications.getCurrent().length"></div>-->
+<p>index.html</p>
+<div ng-view></div>
 </body>
 </html>
