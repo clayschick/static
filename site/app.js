@@ -24,22 +24,17 @@ angular.module('app').controller('HeaderCtrl', ['$scope', '$location', '$route',
         // This sets the location path to '/' when the page loads
         // which will fall into the .otherwise specified on the
         // $routeProvider above. Look at angular-app.
-        //$scope.home = $location.path('/');
+        $scope.home = $location.path('/');
     }]);
 // Source: app/home/home.js
-angular.module('home', [] ).
-config(['$routeProvider', function( $routeProvider ) {
-        $routeProvider.when('/home', {
-            templateUrl:'home/home.tpl.html',
-            controller:'HomeCtrl'
-            /*resolve:{
-                projects:['Projects', function(Projects){
-                    return Projects.all();
-                }]
-            }*/
-        });
-}] ).
-controller('HomeCtrl', ['$scope', function( $scope ) {
-        $scope.message = "In the HomeCtrl";
-        console.log("Hit the home controller");
+angular.module('home', [], ['$routeProvider', function($routeProvider) {
+    $routeProvider.when('/home', {
+        templateUrl:'localhost:8080/home/home.tpl.html',
+        controller:'HomeCtrl'
+    });
+}]);
+
+angular.module('home').controller('HomeCtrl', ['$scope', function($scope) {
+    $scope.message = "In the HomeCtrl";
+    console.log("Hit the home controller");
 }]);
